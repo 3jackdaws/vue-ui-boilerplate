@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "build:docker": "vue-cli-service build && docker-compose build",
     "run:docker": "vue-cli-service build && docker-compose up",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "./node_modules/nightwatch/bin/nightwatch -c nightwatch.conf.js"
   },
   "dependencies": {
     "core-js": "^2.6.5",
@@ -15,12 +16,17 @@
     "vue-router": "^3.0.7"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/register": "^7.5.5",
     "@vue/cli-plugin-babel": "^3.10.0",
     "@vue/cli-plugin-eslint": "^3.10.0",
     "@vue/cli-service": "^3.10.0",
     "babel-eslint": "^10.0.1",
+    "chromedriver": "^76.0.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "geckodriver": "^1.16.2",
+    "nightwatch": "^1.1.13",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
