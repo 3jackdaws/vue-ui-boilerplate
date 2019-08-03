@@ -2,8 +2,10 @@ const chromedriver = require('chromedriver');
 
 module.exports = {
   silent: !process.env.NIGHTWATCH_VERBOSE,
+  src_folders : ["tests"],
   test_settings: {
     default: {
+      launch_url:"http://localhost:8080",
       webdriver: {
         start_process: true,
         port: 4444
