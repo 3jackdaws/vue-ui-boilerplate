@@ -5,11 +5,14 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build:docker": "vue-cli-service build && docker-compose build",
+    "run:docker": "vue-cli-service build && docker-compose up",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^2.6.5",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.7"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.10.0",
