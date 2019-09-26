@@ -6,7 +6,17 @@ import store from './store'
 
 
 import routes from './routes'
-import './quasar'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+ 
+library.add(faGithub, faEnvelope, faLinkedin, faPhone)
+ 
+
+ 
+Vue.component('fa-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
 

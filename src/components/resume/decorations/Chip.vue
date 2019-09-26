@@ -15,11 +15,13 @@ export default {
     .chip{
         display: inline-block;
         border: 1px solid var(--main-color);
-        font-size: 0.7em;
+        font-size: 0.6em;
         padding: 0 4px;
         border-radius: 500em;
         margin-left: 3px;
         line-height: 1.5em;
         text-transform: uppercase;
+        font-family: var( --primary-font);
+        font-weight: bold;
     }
 </style>

@@ -15,7 +15,6 @@ export default {
         border-bottom: 6px solid var(--main-color);
         font-family: var(--headings-font);
         text-transform: uppercase;
-        font-size: 1.5em;
         line-height: 1.2em;
         margin-bottom: 5px;
     }

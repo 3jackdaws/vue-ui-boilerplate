@@ -1,10 +1,7 @@
 <template>
     <div id="resume">
-        <page>
-            <div class="header">
-                <i-circle :size="100">IM</i-circle>
-                <resume-header :data="headerData"></resume-header>
-            </div>
+        <page>  
+            <resume-header :data="headerData"></resume-header>
             <div class="page-content">
                 <column :width="columnWidth">
                     <basic-section label="Profile" :text="data.profile"></basic-section>
@@ -15,6 +12,9 @@
                     <education :data="data.education" />
                 </column>
             </div>
+            <resume-footer>
+                
+            </resume-footer>
         </page>
     </div>
 </template>
@@ -26,6 +26,7 @@ import ResumeHeader from './ResumeHeader'
 
 import Column from './layout/Column'
 import SectionHeader from './layout/SectionHeader'
+import ResumeFooter from './layout/ResumeFooter'
 import Skills from './sections/Skills'
 import Experience from './sections/Experience'
 import Education from './sections/Education'
@@ -43,6 +44,7 @@ export default {
         Skills,
         Experience,
         Education,
+        ResumeFooter,
     },
     props:{
         data:Object,
@@ -50,7 +52,7 @@ export default {
     },
     data(){
         return {
-             columnWidth:35
+             columnWidth:36
         }
     },
     computed:{
@@ -73,22 +75,9 @@ export default {
 <style >
     :root {
     /* --main-color: #f88575; */
-    --main-color: #2cdefd;
-    --headings-font: 'Poppins', sans-serif;
-    --primary-font: 'Titillium Web', serif;
-    }
-
-    #resume{
-        all: unset;
-    }
-
-    #resume h5{
-        font-size: 1em;
-        line-height: 1em;
-    }
-
-    .header{
-        margin-bottom: 15px;
+        --main-color: #2cdefd;
+        --headings-font: 'Poppins', sans-serif;
+        --primary-font: 'Titillium Web', serif;
     }
 
     .page-content{
@@ -105,8 +94,19 @@ export default {
         margin-bottom: 5px;
     }
 
+    h1{
+        font-size: 3em;
+        line-height: 0.9em;
+    }
+
+    h3{
+        font-size:1.25em;
+    }
+
     h5{
+        font-size: 0.9em;
         margin-top: 10px;
+        margin-bottom: 0px;
     }
 
     p,span{
@@ -120,13 +120,21 @@ export default {
         margin-bottom: 0;
     }
 
+    .section{
+        margin-bottom: 15px;
+    }
+
     body{
-        margin-top: -15px !important;
-        padding: 15px;
+        /* margin-top: -15px !important; */
+        /* padding: 15px; */
+    }
+
+    a.no-decorate{
+        text-decoration: none;
+        color: black;
     }
 
     @media print{
-        
         body{
             padding: 0px;
         }

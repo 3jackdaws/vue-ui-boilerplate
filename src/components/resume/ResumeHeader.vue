@@ -1,15 +1,22 @@
 <template>
-    <div class="resume-header">
-        <h1 class="">{{ data.applicant }}</h1>
+<div class="resume-header">
+    <i-circle :size="100">IM</i-circle>
+    <div class="right-header">
+        <h1>{{ data.applicant }}</h1>
         <h3 class="">{{ data.role }}</h3>
         <h3 class=""><a class="no-decorate" :href="data.website">{{ data.website }}</a></h3>
     </div>
+</div>
 </template>
 
 <script>
+import ICircle from './decorations/ICircle'
 export default {
-    props:{data:Object},
 
+    props:{data:Object},
+    components:{
+        ICircle
+    }
 }
 </script>
 
@@ -30,29 +37,17 @@ export default {
         color: black;
     }
 
-    h1{
-        font-size: 50px;
-        font-family: var(--headings-font);
-        font-weight: 800;
-        line-height: initial;
-    }
-
     h3{
-        font-size: 20px;
-        line-height: initial;
+        line-height: 0.9em;
     }
 
-    .resume-header{
+    .right-header{
         float: right;
         display: inline;
         text-align: right;
     }
 
-    .resume-header h1{
-        margin-bottom:-20px;
-    }
-
-    .resume-header *:not(h1){
-        margin-bottom: -6px;
+    .resume-header{
+        margin-bottom: 15px;
     }
 </style>

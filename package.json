@@ -11,6 +11,10 @@
     "run:docker": "vue-cli-service build && docker-compose up"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-brands-svg-icons": "^5.11.2",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/vue-fontawesome": "^0.1.7",
     "@quasar/extras": "^1.0.0",
     "core-js": "^2.6.5",
     "quasar": "^1.0.0",

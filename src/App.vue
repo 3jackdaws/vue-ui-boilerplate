@@ -5,18 +5,18 @@
 </template>
 
 <script>
-import EditableResume from './components/pages/EditableResume.vue'
+
 
 export default {
   name: 'LayoutDefault',
 
   components: {
-    EditableResume
+    
   },
 
   data () {
     return {
-      leftDrawerOpen: this.$q.platform.is.desktop
+
     }
   }
 }
