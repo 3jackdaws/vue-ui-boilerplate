@@ -5,11 +5,18 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state:{
-        message: "Hello, World!"
+        resume:null
     },
     mutations:{
-        changeMessage(state, message){
-            state.message = message;
+        
+    },
+    actions:{
+        async loadResume(url){
+            try{
+                let response = await axios.get(url);
+            }catch(e){
+                
+            }
         }
     }
 })

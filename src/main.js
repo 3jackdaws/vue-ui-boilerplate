@@ -6,6 +6,7 @@ import store from './store'
 
 
 import routes from './routes'
+import './quasar'
 
 Vue.config.productionTip = false
 

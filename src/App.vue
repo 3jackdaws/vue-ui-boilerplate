@@ -1,21 +1,29 @@
 <template>
-  <div id="app">
-    <nav>
-        <router-link to='/'>Home</router-link>
-        <router-link to='/login'>Login</router-link>
-    </nav>
-    <router-view />
-    <div class="counter">{{ count }}</div>
-  </div>
+  <router-view>
+
+  </router-view>
 </template>
 
 <script>
+import EditableResume from './components/pages/EditableResume.vue'
+
 export default {
-  
-  computed:{
-      count(){
-          return this.$store.state.count;
-      }
+  name: 'LayoutDefault',
+
+  components: {
+    EditableResume
+  },
+
+  data () {
+    return {
+      leftDrawerOpen: this.$q.platform.is.desktop
+    }
   }
 }
 </script>
+
+<style>
+body{
+  background-color: whitesmoke;
+}
+</style>

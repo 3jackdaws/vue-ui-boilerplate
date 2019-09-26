@@ -1,10 +1,10 @@
-import Home from './components/pages/Home.vue';
-import Login from './components/pages/Login.vue';
+import ViewResume from './components/pages/ViewResume.vue';
+
 
 
 const routes = [
-    { path: '/', component: Home },
-    { path: '/login', component: Login }
+    { path: '/', component: ViewResume },
+
 ]
 
 
