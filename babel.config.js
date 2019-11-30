@@ -10,7 +10,9 @@ module.exports = {
           "transform": "quasar/dist/babel-transforms/imports.js",
           "preventFullImport": true
         }
-      }
-    ]
+      },
+      
+    ],
+    ["@babel/plugin-proposal-optional-chaining"]
   ]
 }

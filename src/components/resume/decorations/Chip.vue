@@ -13,7 +13,7 @@ export default {
 </script>
 <style scoped>
     .chip{
-        display: inline-block;
+        display: inline;
         border: 1px solid var(--main-color);
         font-size: 0.6em;
         padding: 0 4px;

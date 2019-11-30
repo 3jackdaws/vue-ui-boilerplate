@@ -1,17 +1,26 @@
 <template>
-    <div class='page'>
+    <div :class='{page:true, loaded:isLoaded}'>
         <slot></slot>
     </div>
 </template>
 
 <script>
+import { type } from 'os'
 export default {
-    
+    props:{
+        loaded:Boolean
+    },
+    computed:{
+        isLoaded(){
+            return typeof this.loaded == "undefined" || !!this.loaded
+        }
+    }
 }
 </script>
 
 <style scoped>
     .page{
+        box-sizing: border-box;
         width: 8.5in;
         height: 11in;
         position: relative;
@@ -24,7 +33,7 @@ export default {
     }
 
 
-    /* .page > *{
+    .page > *{
         transition-duration: 1s;
         transition-property: opacity;
         opacity: 0;
@@ -33,9 +42,15 @@ export default {
 
     .page.loaded > *{
         opacity: 1;
-    } */
+    }
 
-    .page:first-child{
-        margin-top:15px;
+    
+
+    @media print{
+        .page{
+            box-shadow: none !important;
+            width: auto;
+            margin: 0;
+        }
     }
 </style>

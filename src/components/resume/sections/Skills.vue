@@ -1,17 +1,23 @@
 <template>
-    <div class="skills">
+    <div class="skills" ref="skillsContainer">
         <section-header>
             Skills
-            <span v-if="skillsHaveExperience" class="proficiency-header">Experience</span>
+            <span class="proficiency-header">Experience</span>
         </section-header>
-        <div v-for='skill in data' class='sub-section' :key="skill.name">
-            <h5>
-                {{ skill.name }} 
-                <span v-if="skill.level" class="proficiency-level">
-                    <span class="proficiency-bar" :style="{width:(skill.level*20)+'%'}"></span>
-                </span>
-            </h5>
-            <p class="desc">{{ skill.desc }}</p>
+        <div class="skill-list">
+            <div v-for='skill in data' class='sub-section' :key="skill.name" :ref="skill.name">
+                <h5 class="skill">
+                    {{ skill.name }} 
+                    <span v-if="skill.level" class="proficiency-level">
+                        <span class="proficiency-bar" :style="{width:(skill.level*20)+'%'}"></span>
+                    </span>
+                </h5>
+                <div class="subskill-list">
+                    <div class="subskill text" v-for="sub in skill.sub">
+                        {{ sub }}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -22,27 +28,76 @@ export default {
         SectionHeader
     },
     props:{
-        data:Array
+        data:Array,
+        overflow:Array
     },
-    computed:{
-        skillsHaveExperience() {
-            if(this.data){
-                for(let i = 0;i<this.data.length;i++) {
-                    if (this.data[i].level) return true;
-                }
-            }
-            return false;
-        },
+    data(){
+        return {
+            _visibleSkills:[],
+        }
+    },
+    
+    watch:{
+        data(skills){
+            this.$nextTick(() => {
+                let containerBottom = this.$refs["skillsContainer"].getBoundingClientRect().bottom;
+                let overflowSkills = [];
+                let refs = this.$refs;
+                // console.info("Bottom: ", containerBottom)
+                this.data.forEach(function(skill, index){
+                    let node = refs[skill.name][0];
+                    let rect = node.getBoundingClientRect();
+                    let visible = rect.bottom < containerBottom;
+
+                    // console.log(skill.name, visible);
+
+                    if(!visible){
+                        overflowSkills.push(skill);
+                    }
+                })
+                this.$emit("update:overflow", overflowSkills);
+            }, this);
+            
+        }
+    },
+    miunted(){
+        
     }
 }
 </script>
 
 <style scoped>
-    h5{
-        font-size: 1em;
-    }
+
     .desc{
         margin-bottom: 10px;
+    }
+
+    .skill{
+        cursor: pointer;
+    }
+
+    .skill:hover{
+        color: var(--main-color);
+        text-decoration: underline;
+    }
+
+    .skill-list{
+        overflow-y: hidden;
+        max-height: 7in;
+        border-bottom: 1px solid #ddd;
+        
+    }
+
+    .subskill-list{
+        padding-left: 20px;
+        
+        border-left: 1px solid #ddd;
+    }
+
+    .subskill{
+        text-transform: uppercase;
+        font-size: 0.8em;
+        line-height: 1.2em;
     }
 
     .proficiency-level{
@@ -54,7 +109,7 @@ export default {
         width: 60px;
         position: relative;
         padding: 1px;
-        margin-top: 10px;
+        margin-top: 5px;
     }
 
     .proficiency-bar{

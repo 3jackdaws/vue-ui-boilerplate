@@ -25,5 +25,9 @@ export default {
 <style>
 body{
   background-color: whitesmoke;
+  padding: 0;
+}
+html{
+  padding: 0;
 }
 </style>

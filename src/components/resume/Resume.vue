@@ -1,15 +1,16 @@
 <template>
     <div id="resume">
-        <page>  
+        <page :loaded="!!data">  
             <resume-header :data="headerData"></resume-header>
             <div class="page-content">
                 <column :width="columnWidth">
-                    <basic-section label="Profile" :text="data.profile"></basic-section>
-                    <skills :data="data.skills" />
+                    <basic-section v-if="data && data.profile" label="Profile" :text="data?data.profile : null"></basic-section>
+                    <basic-section v-if="data && !data.profile" label="Objective" :text="data?data.objective : null"></basic-section>
+                    <skills :data="data?data.skills:null" :overflow.sync="overflowSkills"/>
                 </column>
                 <column :width="100 - columnWidth">
-                    <experience :data="data.experience" />
-                    <education :data="data.education" />
+                    <experience :data="data?data.experience:null" />
+                    <education :data="data?data.education:null" />
                 </column>
             </div>
             <resume-footer>
@@ -52,27 +53,44 @@ export default {
     },
     data(){
         return {
-             columnWidth:36
+             columnWidth:27,
+             loaded:false,
+             overflowSkills:[]
         }
     },
     computed:{
         headerData(){
-            let { applicant, role, website } = this.data;
-            return {
-                applicant,
-                role,
-                website
+            if(this.data){
+                let { applicant, role, website } = this.data;
+                return {
+                    applicant,
+                    role,
+                    website
+                }
             }
+            
         },
         initials(){
             let name = this.data.applicant.split(" ");
             return name[0][0] + name[1][0];
+        },
+       
+    },
+    watch:{
+        data(newData){
+            if(newData.resumeName){
+                document.title = newData.resumeName;
+            }
+        },
+        overflowSkills(skills){
+            console.log(skills);
         }
     }
 }
 </script>
 
 <style >
+
     :root {
     /* --main-color: #f88575; */
         --main-color: #2cdefd;
@@ -109,7 +127,7 @@ export default {
         margin-bottom: 0px;
     }
 
-    p,span{
+    p,span,.text{
         font-family: var(--primary-font);
         /*font-weight: 300;*/
         font-size: 0.9em;
@@ -125,12 +143,16 @@ export default {
     }
 
     body{
-        /* margin-top: -15px !important; */
-        /* padding: 15px; */
+        margin: 0 !important;
     }
 
     a.no-decorate{
         text-decoration: none;
+        color: black;
+    }
+
+    a.no-decorate:hover{
+        text-decoration: underline;
         color: black;
     }
 

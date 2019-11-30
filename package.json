@@ -11,6 +11,7 @@
     "run:docker": "vue-cli-service build && docker-compose up"
   },
   "dependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.7.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-brands-svg-icons": "^5.11.2",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
@@ -33,7 +34,7 @@
     "chromedriver": "^76.0.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "geckodriver": "^1.16.2",
+    "geckodriver": "^1.19.1",
     "nightwatch": "^1.1.13",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",

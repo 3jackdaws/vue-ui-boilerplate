@@ -7,9 +7,9 @@
             <h5>{{ job.title }} &middot; {{ job.company }} &middot; {{ job.from }} - {{ job.to }}</h5>
             
             <p>{{ job.description }}</p>
-            <!-- <ul class="results">
+            <ul class="results">
                 <li v-for="r in job.results"><span>{{ r }}</span></li>
-            </ul> -->
+            </ul>
             <div>
                 <h6 class="inline-header" v-if="job.technologies">Used:</h6>
                 <chip :label="tech" v-for="tech in job.technologies" />
@@ -43,6 +43,11 @@ export default {
     }
 
     p{
+        margin-bottom: 5px;
+    }
+
+    ul.results{
+        margin-top: 0;
         margin-bottom: 5px;
     }
 

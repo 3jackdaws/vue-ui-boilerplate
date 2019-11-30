@@ -8,14 +8,13 @@ export default {
     resumeVersion:"2.3.0",
     applicant:"Ian Murphy",
     role:"Web Application Engineer",          //what you would consider yourself, this can be the position applied for
-    website:"http://ianmurphy.dev",                       //your personal website
+    website:"http://isogen.net",                       //your personal website
     linkedin:"linkedin.com/in/ian-m-murphy/",   
     email:"ian@isogen.net",
     phone:"(503) 830 - 2275",
     github:"github.com/3jackdaws",  
-    // objective:`Seeking a position ${COMPANY} where I can apply ${SKILLS} to ${OUTCOME}.`,                                                              //for tailored resumes
-    profile:`Results driven, semi-perfectionist, multi-language web application engineer who is highly motivated, flexible, and team oriented.`,    //for non-specific resumes
-    displayObjective:false,         //only object OR profile can be displayed at once.  If false, profile is displayed.  If true, objective is displayed.     
+    objective:`Seeking a position ${COMPANY} where I can apply ${SKILLS} to ${OUTCOME}.`,                                                              //for tailored resumes
+    profile:`Results driven, perfectionist, multi-language web application engineer who is highly motivated, flexible, and team oriented.`,    //for non-specific resumes    
     experience:[                    //professional experience
         {
             company:"Daimler Trucks NA",
@@ -27,13 +26,12 @@ export default {
 
             ],
             technologies:[
-                "Java",
                 "Spring Boot",
-                "Apache Struts",
                 "WebSphere",
+                "Vue.js",
                 "Urban Code",
                 "Dojo Toolkit",
-                "ASP Classic",
+                "ASP Classic :(",
                 "C#",
             ]
         },
@@ -125,63 +123,78 @@ export default {
             summary:"GPA 3.61 · Emplaced a solid foundation for analyzing problems and providing practical solutions.  Courses included Software Testing, Data Structures, Design Patterns, Operating Systems, Embedded Networking, and Advanced Unix."
         }
     ],
-    primarySkills:6,    //display this many skills on first page
-    secondarySkills:20, //display this many skills in overflow on second page
     skills:[
         {
             name:"Docker",
             level:5,
-            desc:"Extreme proficiency with Docker, Docker Compose, with experience containerizing existing applications and knowledge of advantages and shortfalls of application containers and microservice architectures."
+            sub:[
+                "Docker Compose",
+                "Multistage Builds",
+            ]
         },
         {
             name:"Python",
             level:5,
-            desc:"Extreme proficiency with Python, its constructs, best practices, advantages and shortfalls.  Extensive knowledge of available libraries and PIP"
+            sub:[
+                "Django/DRF",
+                "Flask",
+                "Asyncio",
+            ]
         },
         {
             name:"Java",
             level:4,
-            desc:"Experience engineering enterprise web applications using multiple Java web frameworks (Struts, Spring Boot)"
+            sub:[
+                "Spring Boot",
+                "J2EE",
+                "WebSphere",
+                "JSP",
+            ]
         },
         {
-            name:"Web Development",
+            name:"Testing",
             level:4,
-            desc:"High level of experience with web development technologies, web design, application architectures (MVC, MVT), designing scalable and fault tolerant web applications, and deploying and hosting web sites to Linux servers and Docker hosts."
-        },
-        {
-            name:"Software Testing",
-            level:4,
-            desc:"Adept knowledge of testing best practices, test driven development, and behavior driven development using Gherkin and frameworks similar to Cucumber."
+            sub:[
+                "Hardware Validation",
+                "Nightwatch.js",
+                "BDD/Gherkin",
+                "Selenium",
+            ]
         },
         {
             name:"JavaScript",
-            level:3,
-            desc:"Proficiency with front-end JavaScript, the DOM, and knowledge of the JavaScript runtime environment."
+            level:4,
+            sub:[
+                "Node",
+                "Vue",
+            ]
         },
         {
-            name:"Vue.JS",
-            level:3,
-            desc:"Moderate experience designing and developing Web applications with Vue.  This resume extensively uses Vue.js."
-        },
-        {
-            name:"Amazon Web Services",
-            level:3,
-            desc:"Experience with EC2, ECS, Lambda, and API Gateway services.  Experience converting existing software solutions into AMIs."
+            name:"AWS",
+            level:2,
+            sub:[
+                "EC2",
+                "ECS",
+                "Fargate",
+            ]
         },
         {
             name:"C/C++",
             level:3.5,
-            desc:"Experience includes embedded networking and low level Linux development. Moderately experienced with C++ and many language constructs."
+            sub:[
+                "EC2",
+                "ECS",
+                "Fargate",
+            ]
         },
-        // {
-        //     name:"Django",
-        //     level:4,
-        //     desc:"Proficient with Models, Forms, Middleware, Django templating, custom authentication backends.  Extensive experience with add on frameworks such as DRF and Channels."
-        // },
         {
             name:"C#",
             level:3,
-            desc:"Moderate experience writing Xamarin apps and Unity game logic.  Much formal schooling, including Testing and Design Patterns was in C#."
+            sub:[
+                "SpecFlow",
+                "Xamarin",
+                "Unity",
+            ]
         },
         {
             name:"Jenkins",
