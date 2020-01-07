@@ -4,7 +4,7 @@ const OUTCOME = "ensure a high level of efficiency and productivity";
 
 
 export default {
-    resumeName:"General Resume",
+    resumeName:"General Resume | Ian Murphy",
     resumeVersion:"2.3.0",
     applicant:"Ian Murphy",
     role:"Web Application Engineer",          //what you would consider yourself, this can be the position applied for
@@ -18,12 +18,12 @@ export default {
     experience:[                    //professional experience
         {
             company:"Daimler Trucks NA",
-            title:"Web App Engineer",
-            from:"March 2019",
+            title:"Web Application Engineer",
+            from:"Mar 2019",
             to:"Present",
-            description:"Served as Lead Support Engineer for high SLA, customer-facing, commercial vehicle information systems.  Acted as sole support developer for several internal applications using multiple different languages and web frameworks.",
+            description:"Designed and developed a high availabilty, performance-oriented technical service document delivery application and worked closely with out-of-country developers to integrate with experimental document delivery services. Ensured customer satisfaction of commercial vehicle information applications and microservices through the creation of automated end to end tests and the standardization of development and deployment procedures.  Maintained legacy application security compliance and performed necessary remediation steps.",
             results:[
-
+                "Decrease in deployment validation times for critical applications"
             ],
             technologies:[
                 "Spring Boot",
@@ -36,10 +36,10 @@ export default {
             ]
         },
         {
-            company:"Intel with Cinder Solutions",
+            company:"Intel w/ Cinder Solutions",
             title:"Automation Engineer",
-            from:"January 2019",
-            to:"March 2019",
+            from:"Jan 2019",
+            to:"Mar 2019",
             description:"Automated validation processes for Intel's Dynamic Tuning product.  Triaged and debugged failing tests.",
             results:[
 
@@ -54,7 +54,7 @@ export default {
         {
             company:"Daimler Trucks NA",
             title:"Cloud Automation Intern",
-            from:"June 2018",
+            from:"Jun 2018",
             to:"Dec 2018",
             description:"Lead efforts to consolidate steps involved in decommissioning enterprise infrastructure and developed self-service VM decommissioning tools. Was tasked with evaluating and supplying recommendations for the purchase of third party software amounting to more than $200k. ",
             results:[
@@ -74,7 +74,7 @@ export default {
         {
             company:"Tektronix",
             title:"Software Engineer Intern",
-            from:"June 2017",
+            from:"Jun 2017",
             to:"Dec 2017",
             description:"Designed and developed self-service developer tools for product licensing, visual API testing, and building evaluation software. Dockerized high-performance video network monitoring appliance software. Created Cloud provider images (AMIs) from marketplace base OS images for network video monitoring products.",
             results:[
@@ -90,29 +90,29 @@ export default {
                 "AWS",
             ]
         },
-        // {
-        //     company:"Vobile, Inc",
-        //     title:"R&D Intern",
-        //     from:"December 2016",
-        //     to:"January 2017",
-        //     description:"Oversaw office-wide Windows 10 workstation upgrades. Performed out of box setup and installation of new workstations. ",
-        //     technologies:[
-        //         "Python",
-        //         "Docker",
-        //     ]
-        // },
-        // {
-        //     company:"Vobile, Inc",
-        //     title:"R&D Intern",
-        //     from:"June 2016",
-        //     to:"January 2017",
-        //     description:"Accelerated internal documentation software migration by designing format conversion scripts in Python. Dockerized inventory managment software. Performed intra-office tech support.",
-        //     technologies:[
-        //         "Python",
-        //         "Docker",
-        //     ]
+        {
+            company:"Vobile, Inc",
+            title:"R&D Intern",
+            from:"Dec 2016",
+            to:"Jan 2017",
+            description:"Oversaw office-wide Windows 10 workstation upgrades. Performed out of box setup and installation of new workstations. ",
+            technologies:[
+                "Python",
+                "Docker",
+            ]
+        },
+        {
+            company:"Vobile, Inc",
+            title:"R&D Intern",
+            from:"Jun 2016",
+            to:"Sep 2016",
+            description:"Accelerated internal documentation software migration by designing format conversion scripts in Python. Dockerized inventory managment software. Performed intra-office tech support.",
+            technologies:[
+                "Python",
+                "Docker",
+            ]
 
-        // },
+        },
     ],
     education:[
         {
@@ -136,7 +136,7 @@ export default {
             name:"Python",
             level:5,
             sub:[
-                "Django/DRF",
+                "Django/Rest Framework",
                 "Flask",
                 "Asyncio",
             ]
@@ -165,8 +165,8 @@ export default {
             name:"JavaScript",
             level:4,
             sub:[
-                "Node",
-                "Vue",
+                "Node.js",
+                "Vue.js",
             ]
         },
         {
@@ -181,11 +181,7 @@ export default {
         {
             name:"C/C++",
             level:3.5,
-            sub:[
-                "EC2",
-                "ECS",
-                "Fargate",
-            ]
+            
         },
         {
             name:"C#",
@@ -206,56 +202,27 @@ export default {
             level:3,
             desc:"Experience with using CLI Git and GitLab to collaborate on a team and control software versions."
         },
-        // {
-        //     name:"REST Framework",
-        //     level:3,
-        //     desc:"Experience with Generic Views, custom APIViews, Serializers, Authentication, Viewsets and Routers."
-        // },
-        // {
-        //     name:"Channels",
-        //     level:4,
-        //     desc:"Proficient with version 1 and 2, asynchronous programming, channel layers, background and WebSocket workers."
-        // },
         {
             name:"RESTful API Design",
             level:4,
             desc:"Extensive experience designing and developing RESTful APIs for Web Applications and Services."
         },
         {
-            name:"SQL - Postgres & MySQL",
+            name:"SQL",
             level:3,
-            desc:"Intermediate knowledge of SQL syntax, dialogs, and features. Primary experience with PostgreSQL and MySQL."
+            sub:[
+                "Postgres",
+                "MySQL",
+                "SQL Server",
+            ]
         },
-        {
-            name:"Node.js",
-            level:2,
-            desc:"Intermediate level experience with writing Node applications as both standalone web sites and Electron Apps."
-        },
-        // {
-        //     name:"Azure",
-        //     level:2,
-        //     desc:"Experience with ARM Templates."
-        // },
         {
             name:"Kubernetes",
             level:3,
-            desc:"Moderate experience with multiple Kubernetes providers including Rancher and OpenShift."
+            sub:[
+                "Rancher",
+            ]
         },
-        {
-            name:"UX Design",
-            level:3,
-            desc:"Extreme drive and intuition to provide the best user experience for customers."
-        },
-        {
-            name:"PHP",
-            level:4,
-            desc:"Self-taught for personal web projects, used professionally while working on Tektronix's Sentry Web UI."
-        },
-        // {
-        //     name:"Golang",
-        //     level:2,
-        //     desc:"Self-taught for personal web projects."
-        // },
     ],
     projects:[      // this just fills up space on the second page, idk what else to put here ¯\_(ツ)_/¯
         {

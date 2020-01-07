@@ -1,11 +1,12 @@
 <template>
     <div class="skills" ref="skillsContainer">
         <section-header>
-            Skills
+            {{ title }}
+            <h6 class="section-subheader">{{ subtitle }}</h6>
             <span class="proficiency-header">Experience</span>
         </section-header>
         <div class="skill-list">
-            <div v-for='skill in data' class='sub-section' :key="skill.name" :ref="skill.name">
+            <div v-for='skill in skills' :class='{"sub-section":true, "visible":!calculating && overflow.indexOf(skill) < 0}' :key="skill.name" :ref="skill.name">
                 <h5 class="skill">
                     {{ skill.name }} 
                     <span v-if="skill.level" class="proficiency-level">
@@ -22,47 +23,71 @@
     </div>
 </template>
 <script>
-import SectionHeader from '../layout/SectionHeader'
+import SectionHeader from '../layout/SectionHeader' 
+
 export default {
     components:{
         SectionHeader
     },
     props:{
-        data:Array,
-        overflow:Array
+        skills:Array,
+        overflow:{
+            default: ()=>[],
+            type: Array
+        },
+        title:{
+            default:"Skills",
+            type:String
+        },
+        subtitle:String
     },
     data(){
         return {
-            _visibleSkills:[],
+            calculating:true
         }
+    },
+
+    methods:{
+        getFooterTop(){
+            let footer = document.querySelector("#p1-footer");
+            return footer.getBoundingClientRect().top;
+        },
+        calcSkills(){
+            this.calculating = true;
+            
+        
+
+            let overflowSkills = [];
+
+            this.skills.forEach(function(skill, index){
+                let footerTop = this.getFooterTop()
+                let node = this.$refs[skill.name][0];
+                let skillBottom = node.getBoundingClientRect().bottom;
+                let visible = skillBottom < footerTop;
+
+                console.log(skill.name, `${skillBottom} < ${footerTop}`);
+
+                // console.log(skill.name, visible);
+
+                if(!visible){
+                    overflowSkills.push(skill);
+                }
+            }.bind(this))
+            this.$emit("update:overflow", overflowSkills);
+            this.calculating = false;
+        },
+        
     },
     
     watch:{
-        data(skills){
-            this.$nextTick(() => {
-                let containerBottom = this.$refs["skillsContainer"].getBoundingClientRect().bottom;
-                let overflowSkills = [];
-                let refs = this.$refs;
-                // console.info("Bottom: ", containerBottom)
-                this.data.forEach(function(skill, index){
-                    let node = refs[skill.name][0];
-                    let rect = node.getBoundingClientRect();
-                    let visible = rect.bottom < containerBottom;
-
-                    // console.log(skill.name, visible);
-
-                    if(!visible){
-                        overflowSkills.push(skill);
-                    }
-                })
-                this.$emit("update:overflow", overflowSkills);
-            }, this);
-            
-        }
+        skills(n){
+            this.$nextTick(this.calcSkills);
+        },
     },
-    miunted(){
-        
-    }
+    mounted(){
+        this.$nextTick(this.calcSkills);
+    },
+    
 }
 </script>
 
@@ -83,15 +108,23 @@ export default {
 
     .skill-list{
         overflow-y: hidden;
-        max-height: 7in;
-        border-bottom: 1px solid #ddd;
         
+    }
+
+    .sub-section{
+        transition-duration: 0.2s;
+        transition-property: opacity;
+        opacity: 0;
+    }
+
+    .visible{
+        opacity: 1;
     }
 
     .subskill-list{
         padding-left: 20px;
         
-        border-left: 1px solid #ddd;
+        border-left: 1px solid #2cdefd;
     }
 
     .subskill{
@@ -126,7 +159,12 @@ export default {
         font-family: var(--headings-font);
         font-size: 0.5em;
         float:right;
-        margin-top: 5px;
+        margin-top: 10px;
         margin-bottom: 0px;
+    }
+
+    .section-subheader{
+        display: inline-block;
+        font-size: 0.5em;
     }
 </style>

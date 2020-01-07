@@ -1,7 +1,7 @@
 <template>
     <div class="experience section">
         <section-header>
-            Experience
+            {{ title }}
         </section-header>
         <div v-for='job in data' class='job' :key="job.title">
             <h5>{{ job.title }} &middot; {{ job.company }} &middot; {{ job.from }} - {{ job.to }}</h5>
@@ -22,7 +22,11 @@ import SectionHeader from '../layout/SectionHeader'
 import Chip from '../decorations/Chip'
 export default {
     props:{
-        data:Array
+        data:Array,
+        title:{
+            default:"Experience",
+            type:String
+        }
     },
     components:{
         SectionHeader,

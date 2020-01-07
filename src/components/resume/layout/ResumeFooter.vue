@@ -53,9 +53,10 @@ export default {
     }
 
     .page-footer{
+        box-sizing: border-box;
         display: flex;
         justify-content: space-around;
-        padding-top: 15px;
+
         position: absolute;
         bottom:0;
         left:0;

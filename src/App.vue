@@ -8,7 +8,7 @@
 
 
 export default {
-  name: 'LayoutDefault',
+  name: 'App',
 
   components: {
     

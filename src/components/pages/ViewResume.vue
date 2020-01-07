@@ -11,14 +11,8 @@ export default {
     },
     data(){
         return {
-            data:null,
+            data:DATA,
         }
-    },
-    mounted(){
-        setTimeout(_=>{
-            this.data = DATA;
-        }, 2000)
-        
     }
 }
 </script>

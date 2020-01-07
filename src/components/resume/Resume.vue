@@ -6,17 +6,27 @@
                 <column :width="columnWidth">
                     <basic-section v-if="data && data.profile" label="Profile" :text="data?data.profile : null"></basic-section>
                     <basic-section v-if="data && !data.profile" label="Objective" :text="data?data.objective : null"></basic-section>
-                    <skills :data="data?data.skills:null" :overflow.sync="overflowSkills"/>
+                    <skills :skills="data?data.skills:[]" :overflow.sync="overflowSkills"/>
                 </column>
                 <column :width="100 - columnWidth">
-                    <experience :data="data?data.experience:null" />
+                    <experience :data="data?data.experience.slice(0,4):null" />
                     <education :data="data?data.education:null" />
                 </column>
             </div>
-            <resume-footer>
+            <resume-footer id="p1-footer">
                 
             </resume-footer>
         </page>
+        <!-- <page :loaded="!!data">
+            <div class="page-content">
+                <column :width="columnWidth">
+                    <skills title="More Skills" :skills="overflowSkills" />
+                </column>
+                <column :width="100 - columnWidth">
+                    <experience title="More Experience" :data="data?data.experience.slice(4):null" />
+                </column>
+            </div>
+        </page> -->
     </div>
 </template>
 
@@ -53,7 +63,7 @@ export default {
     },
     data(){
         return {
-             columnWidth:27,
+             columnWidth:29,
              loaded:false,
              overflowSkills:[]
         }
@@ -83,7 +93,19 @@ export default {
             }
         },
         overflowSkills(skills){
-            console.log(skills);
+            console.info("OVERFLOW:", skills);
+        }
+    },
+    mounted(){
+        document.addEventListener("paste", function(event){
+            let text = event.clipboardData.getData('text');
+            if (!!text){
+                console.log(text);
+            }
+        })
+
+        if(this.data.resumeName){
+            document.title = this.data.resumeName;
         }
     }
 }
@@ -131,11 +153,14 @@ export default {
         font-family: var(--primary-font);
         /*font-weight: 300;*/
         font-size: 0.9em;
+        line-height: 1.3em;
     }
 
     p{
         margin-top: 0;
         margin-bottom: 0;
+        text-align: justify;
+        text-justify: inter-cluster;
     }
 
     .section{
