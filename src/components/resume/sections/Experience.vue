@@ -3,7 +3,7 @@
         <section-header>
             {{ title }}
         </section-header>
-        <div v-for='job in data' class='job' :key="job.title">
+        <div v-for='job in data' class='job' :key="job.title + job.to">
             <h5>{{ job.title }} &middot; {{ job.company }} &middot; {{ job.from }} - {{ job.to }}</h5>
             
             <p>{{ job.description }}</p>

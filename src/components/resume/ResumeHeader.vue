@@ -13,7 +13,9 @@
 import ICircle from './decorations/ICircle'
 export default {
 
-    props:{data:Object},
+    props:{
+        data:Object
+    },
     components:{
         ICircle
     },

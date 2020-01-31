@@ -6,7 +6,8 @@
             <span class="proficiency-header">Experience</span>
         </section-header>
         <div class="skill-list">
-            <div v-for='skill in skills' :class='{"sub-section":true, "visible":!calculating && overflow.indexOf(skill) < 0}' :key="skill.name" :ref="skill.name">
+            <draggable :list="skills" group="skills" handle=".skill">
+            <div v-for='skill in skills' :class='{"sub-section":true, "visible":!calculating}' :key="skill.name" :ref="skill.name">
                 <h5 class="skill">
                     {{ skill.name }} 
                     <span v-if="skill.level" class="proficiency-level">
@@ -19,22 +20,21 @@
                     </div>
                 </div>
             </div>
+            </draggable>
         </div>
     </div>
 </template>
 <script>
 import SectionHeader from '../layout/SectionHeader' 
+import draggable from "vuedraggable";
 
 export default {
     components:{
-        SectionHeader
+        SectionHeader,
+        draggable
     },
     props:{
         skills:Array,
-        overflow:{
-            default: ()=>[],
-            type: Array
-        },
         title:{
             default:"Skills",
             type:String
@@ -43,7 +43,7 @@ export default {
     },
     data(){
         return {
-            calculating:true
+            calculating:false
         }
     },
 
@@ -80,12 +80,12 @@ export default {
     },
     
     watch:{
-        skills(n){
-            this.$nextTick(this.calcSkills);
-        },
+        // skills(n){
+        //     this.$nextTick(this.calcSkills);
+        // },
     },
     mounted(){
-        this.$nextTick(this.calcSkills);
+        // this.$nextTick(this.calcSkills);
     },
     
 }
@@ -93,17 +93,21 @@ export default {
 
 <style scoped>
 
+    .sortable-ghost{
+        color: var(--main-color);
+    }
+
     .desc{
         margin-bottom: 10px;
     }
 
     .skill{
-        cursor: pointer;
+        cursor: grab;
     }
 
     .skill:hover{
         color: var(--main-color);
-        text-decoration: underline;
+        /* text-decoration: underline; */
     }
 
     .skill-list{

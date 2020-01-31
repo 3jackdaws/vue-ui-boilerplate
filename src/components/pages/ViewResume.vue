@@ -1,5 +1,5 @@
 <template>
-    <Resume :data="data"/>
+    <Resume v-bind="resume"/>
 </template>
 
 <script>
@@ -10,9 +10,10 @@ export default {
         Resume
     },
     data(){
-        return {
-            data:DATA,
-        }
+        return {resume:this.$store.resume};
+    },
+    mounted(){
+        this.$store.commit("setResume", DATA);
     }
 }
 </script>

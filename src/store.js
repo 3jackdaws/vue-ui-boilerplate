@@ -5,10 +5,15 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state:{
-        resume:null
+        resume:{},
+        resumeLoaded:false
     },
     mutations:{
-        
+        setResume({resume}, data){
+            console.info("SET RESUME: ", data.resumeName);
+            this.state.resume = data;
+            this.state.resumeLoaded = true;
+        }
     },
     actions:{
         async loadResume(url){

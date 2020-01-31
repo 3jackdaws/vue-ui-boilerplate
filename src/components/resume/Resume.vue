@@ -1,29 +1,29 @@
 <template>
     <div id="resume">
-        <page :loaded="!!data">  
+        <page :loaded="!!loaded">  
             <resume-header :data="headerData"></resume-header>
             <div class="page-content">
                 <column :width="columnWidth">
-                    <basic-section v-if="data && data.profile" label="Profile" :text="data?data.profile : null"></basic-section>
-                    <basic-section v-if="data && !data.profile" label="Objective" :text="data?data.objective : null"></basic-section>
-                    <skills :skills="data?data.skills:[]" :overflow.sync="overflowSkills"/>
+                    <basic-section v-if="resume.profile" label="Profile" :text="resume.profile"></basic-section>
+                    <!-- <basic-section v-if="data && !data.profile" label="Objective" :text="objective"></basic-section> -->
+                    <skills :skills="resume.skills"/>
                 </column>
                 <column :width="100 - columnWidth">
-                    <experience :data="data?data.experience.slice(0,4):null" />
-                    <education :data="data?data.education:null" />
+                    <experience :data="resume.experience.slice(0,4)" />
+                    <education :data="resume.education" />
                 </column>
             </div>
             <resume-footer id="p1-footer">
                 
             </resume-footer>
         </page>
-        <!-- <page :loaded="!!data">
+        <!-- <page :loaded="!!loaded">
             <div class="page-content">
                 <column :width="columnWidth">
                     <skills title="More Skills" :skills="overflowSkills" />
                 </column>
                 <column :width="100 - columnWidth">
-                    <experience title="More Experience" :data="data?data.experience.slice(4):null" />
+                    <experience title="More Experience" :data="experience.slice(4)" />
                 </column>
             </div>
         </page> -->
@@ -58,22 +58,21 @@ export default {
         ResumeFooter,
     },
     props:{
-        data:Object,
-       
+        applicant:String,
+
     },
     data(){
         return {
-             columnWidth:29,
-             loaded:false,
-             overflowSkills:[]
+            columnWidth:29,
+            
         }
     },
     computed:{
         headerData(){
             if(this.data){
-                let { applicant, role, website } = this.data;
+                let { applicant, role, website } = this.resume;
                 return {
-                    applicant,
+                    applicant:this.applicant,
                     role,
                     website
                 }
@@ -84,16 +83,24 @@ export default {
             let name = this.data.applicant.split(" ");
             return name[0][0] + name[1][0];
         },
-       
+        loaded(){
+            return true;//"resumeName" in this.resume
+        }
     },
     watch:{
-        data(newData){
-            if(newData.resumeName){
-                document.title = newData.resumeName;
-            }
-        },
-        overflowSkills(skills){
-            console.info("OVERFLOW:", skills);
+        resume:{
+            handler:function(data){
+                if(!data) return;
+                console.info(data);
+                if("resumeName" in data){
+                    document.title = data.resumeName;
+                }
+                let {skills, experience, profile, education} = data;
+                console.info(skills);
+                skills.forEach(s => this.skills.push(s))
+
+            },
+            
         }
     },
     mounted(){
@@ -104,8 +111,8 @@ export default {
             }
         })
 
-        if(this.data.resumeName){
-            document.title = this.data.resumeName;
+        if("resumeName" in this.resume){
+            document.title = this.resume.resumeName;
         }
     }
 }

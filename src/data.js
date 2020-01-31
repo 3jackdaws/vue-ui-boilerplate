@@ -7,7 +7,7 @@ export default {
     resumeName:"General Resume | Ian Murphy",
     resumeVersion:"2.3.0",
     applicant:"Ian Murphy",
-    role:"Web Application Engineer",          //what you would consider yourself, this can be the position applied for
+    role:"Full Stack Engineer",          //what you would consider yourself, this can be the position applied for
     website:"http://isogen.net",                       //your personal website
     linkedin:"linkedin.com/in/ian-m-murphy/",   
     email:"ian@isogen.net",
